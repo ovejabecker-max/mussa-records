@@ -150,6 +150,66 @@ const DISCOGRAPHY = [
   { id: '05', title: 'GLITCH_PROTOCOL', year: '2021', span: 'col-span-12 md:col-span-4 row-span-1', img: '50' },
 ];
 
+const MANIATIC_WORKS = [
+  {
+    id: 'MB-001',
+    title: 'HYPERDRIVE DRILL',
+    style: 'Drill / Cinematic',
+    bpm: 144,
+    tone: 'F#m',
+    trackIndex: 0,
+    notes: 'Bajo modular, percusión fracturada y capas sintéticas con impacto de trailer.',
+  },
+  {
+    id: 'MB-002',
+    title: 'GHOST PROTOCOL TRAP',
+    style: 'Trap / Dark',
+    bpm: 138,
+    tone: 'Cm',
+    trackIndex: 3,
+    notes: 'Melodías sombrías, 808 agresivo y texturas vocales distorsionadas.',
+  },
+  {
+    id: 'MB-003',
+    title: 'NEON RAGE',
+    style: 'Hypertrap / Rage',
+    bpm: 160,
+    tone: 'Dm',
+    trackIndex: 5,
+    notes: 'Leads digitales, glitches sincronizados y energía alta para hooks vocales.',
+  },
+];
+
+const BEAT_STORE = [
+  {
+    sku: 'BT-011',
+    name: 'SYNAPTIC CODE',
+    format: 'WAV + STEMS',
+    lease: '$49',
+    exclusive: '$299',
+    mood: 'Agresivo / Futurista',
+    bpm: 150,
+  },
+  {
+    sku: 'BT-021',
+    name: 'VANTA SIGNAL',
+    format: 'WAV + MP3',
+    lease: '$39',
+    exclusive: '$249',
+    mood: 'Oscuro / Cinemático',
+    bpm: 136,
+  },
+  {
+    sku: 'BT-034',
+    name: 'NEXUS BLOODLINE',
+    format: 'WAV + STEMS + MIDI',
+    lease: '$59',
+    exclusive: '$349',
+    mood: 'Épico / Melódico',
+    bpm: 128,
+  },
+];
+
 const TRACKS = [
   {
     id: 'T-01',
@@ -774,6 +834,135 @@ export default function App() {
         </section>
 
         <section className="mt-20 mb-24">
+          <div className="relative border border-cyan-900/60 bg-black/80 p-8 md:p-10 overflow-hidden">
+            <div className="absolute -top-28 -right-24 w-72 h-72 bg-cyan-500/10 blur-3xl rounded-full pointer-events-none"></div>
+            <div className="absolute -bottom-24 -left-12 w-64 h-64 bg-fuchsia-500/10 blur-3xl rounded-full pointer-events-none"></div>
+
+            <div className="relative z-10">
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 border-b border-gray-800 pb-6 mb-8">
+                <div className="text-left">
+                  <p className="text-xs text-gray-500 uppercase tracking-[0.28em] mb-3">Unidad de Producción Avanzada</p>
+                  <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-cyan-300">
+                    BEAT MAKER // MANIATIC BEAT
+                  </h3>
+                  <p className="text-sm text-gray-400 mt-3 max-w-2xl">
+                    Arquitectura sonora de alto rendimiento: diseño de beats, mezcla creativa y texturas
+                    experimentales para artistas que buscan identidad propia.
+                  </p>
+                </div>
+                <div className="grid grid-cols-3 gap-2 text-center min-w-[240px]">
+                  <div className="border border-gray-800 bg-black/70 p-3">
+                    <p className="text-cyan-400 text-lg font-bold">120+</p>
+                    <p className="text-[10px] text-gray-500 uppercase">Beats</p>
+                  </div>
+                  <div className="border border-gray-800 bg-black/70 p-3">
+                    <p className="text-fuchsia-400 text-lg font-bold">5 años</p>
+                    <p className="text-[10px] text-gray-500 uppercase">Experiencia</p>
+                  </div>
+                  <div className="border border-gray-800 bg-black/70 p-3">
+                    <p className="text-emerald-400 text-lg font-bold">24h</p>
+                    <p className="text-[10px] text-gray-500 uppercase">Respuesta</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
+                <div className="xl:col-span-7 space-y-5">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-left text-sm text-cyan-300 uppercase tracking-[0.2em]">Trabajos Destacados</h4>
+                    <span className="text-[10px] text-gray-600 uppercase">Preview en la barra inferior</span>
+                  </div>
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                    {MANIATIC_WORKS.map((work) => (
+                      <article key={work.id} className="border border-gray-800 bg-black/60 p-4 text-left hover:border-cyan-500/50 transition-colors">
+                        <p className="text-[10px] text-gray-500 uppercase tracking-[0.18em] mb-2">{work.id}</p>
+                        <h5 className="text-base text-white font-bold uppercase leading-tight mb-2">{work.title}</h5>
+                        <p className="text-xs text-gray-400 mb-3">{work.notes}</p>
+                        <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest mb-4">
+                          <span className="border border-gray-700 px-2 py-1 text-gray-300">{work.style}</span>
+                          <span className="border border-gray-700 px-2 py-1 text-cyan-300">{work.bpm} BPM</span>
+                          <span className="border border-gray-700 px-2 py-1 text-fuchsia-300">{work.tone}</span>
+                        </div>
+                        <button
+                          onClick={() => playTrackAtIndex(work.trackIndex)}
+                          className="w-full border border-cyan-900/70 px-3 py-2 text-[11px] uppercase tracking-[0.18em] text-cyan-300 hover:border-cyan-400 hover:text-cyan-100 transition-colors"
+                        >
+                          Cargar Preview
+                        </button>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="xl:col-span-5 border border-gray-800 bg-black/50 p-5">
+                  <div className="flex items-center justify-between mb-5">
+                    <h4 className="text-sm text-fuchsia-300 uppercase tracking-[0.2em] text-left">Beat Store</h4>
+                    <span className="text-[10px] text-gray-600 uppercase">Licencias Digitales</span>
+                  </div>
+                  <div className="space-y-4">
+                    {BEAT_STORE.map((beat) => (
+                      <article key={beat.sku} className="border border-gray-800 p-4 text-left bg-black/60">
+                        <div className="flex items-start justify-between gap-2 mb-2">
+                          <div>
+                            <p className="text-[10px] text-gray-500 uppercase tracking-[0.2em]">{beat.sku}</p>
+                            <h5 className="text-sm text-white font-bold uppercase tracking-wide">{beat.name}</h5>
+                          </div>
+                          <span className="text-[10px] border border-gray-700 px-2 py-1 text-gray-300 uppercase">{beat.bpm} BPM</span>
+                        </div>
+                        <p className="text-xs text-gray-400 mb-3">{beat.mood} · {beat.format}</p>
+                        <div className="grid grid-cols-2 gap-2 text-[11px] uppercase tracking-wider mb-3">
+                          <div className="border border-gray-800 p-2">
+                            <p className="text-gray-500 text-[10px]">Lease</p>
+                            <p className="text-cyan-300 font-bold">{beat.lease}</p>
+                          </div>
+                          <div className="border border-gray-800 p-2">
+                            <p className="text-gray-500 text-[10px]">Exclusive</p>
+                            <p className="text-fuchsia-300 font-bold">{beat.exclusive}</p>
+                          </div>
+                        </div>
+                        <a
+                          href={`mailto:hola@mussarecords.com?subject=Compra%20Beat%20${encodeURIComponent(beat.name)}`}
+                          className="inline-block w-full text-center border border-fuchsia-900/70 px-3 py-2 text-[11px] uppercase tracking-[0.18em] text-fuchsia-300 hover:border-fuchsia-400 hover:text-fuchsia-100 transition-colors"
+                        >
+                          Comprar Beat
+                        </a>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-4 text-left">
+                <div className="border border-gray-800 bg-black/60 p-4">
+                  <p className="text-[10px] text-gray-500 uppercase tracking-[0.22em] mb-2">Contacto Directo</p>
+                  <a
+                    href="mailto:hola@mussarecords.com"
+                    className="text-cyan-300 hover:text-cyan-100 transition-colors text-sm break-all"
+                  >
+                    hola@mussarecords.com
+                  </a>
+                </div>
+                <div className="border border-gray-800 bg-black/60 p-4">
+                  <p className="text-[10px] text-gray-500 uppercase tracking-[0.22em] mb-2">Instagram</p>
+                  <a
+                    href="https://www.instagram.com/maniaticbeat"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-fuchsia-300 hover:text-fuchsia-100 transition-colors text-sm"
+                  >
+                    @maniaticbeat
+                  </a>
+                </div>
+                <div className="border border-gray-800 bg-black/60 p-4">
+                  <p className="text-[10px] text-gray-500 uppercase tracking-[0.22em] mb-2">Formato de Pedido</p>
+                  <p className="text-sm text-gray-300">Enviá referencia, BPM objetivo, tonalidad y fecha de entrega.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-20 mb-24">
           <div className="flex items-center justify-between mb-8 border-b border-gray-800 pb-4">
             <h3 className="text-2xl text-cyan-400 font-bold uppercase tracking-widest">
               <span className="text-magenta-500 mr-2">&gt;</span> CONTACTO
@@ -830,14 +1019,55 @@ export default function App() {
 
       <div className="fixed bottom-0 left-0 w-full bg-black/90 backdrop-blur-md border-t border-cyan-900/50 p-4 z-50 flex flex-col md:flex-row items-center justify-between shadow-[0_-10px_30px_rgba(0,255,255,0.05)]">
         
-        <div className="flex items-center w-full md:w-1/3 mb-4 md:mb-0">
-          <div className="w-12 h-12 bg-gray-900 border border-gray-700 flex items-center justify-center mr-4 relative overflow-hidden">
-            <Disc className={`w-6 h-6 text-cyan-400 ${isPlaying ? 'animate-spin' : ''}`} style={{ animationDuration: '3s' }} />
-          </div>
-          <div>
-            <p className="text-xs text-gray-500 uppercase">Reproduciendo_Ahora</p>
-            <p className="text-sm font-bold text-white truncate max-w-[200px]">{currentTrack.title}</p>
-            <p className="text-[10px] text-gray-600 uppercase">{currentTrack.source} // {playerNotice}</p>
+        <div className="w-full md:w-[38%] mb-4 md:mb-0">
+          <div className="relative border border-cyan-900/50 bg-gradient-to-br from-cyan-950/20 via-black to-fuchsia-950/20 p-3 md:p-4 overflow-hidden">
+            <div className="absolute -top-10 -left-6 w-32 h-32 bg-cyan-500/10 blur-2xl rounded-full pointer-events-none"></div>
+            <div className="absolute -bottom-10 -right-6 w-32 h-32 bg-fuchsia-500/10 blur-2xl rounded-full pointer-events-none"></div>
+
+            <div className="relative z-10 flex flex-col gap-3">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-start gap-3 min-w-0">
+                  <div className="w-12 h-12 border border-cyan-700/60 bg-black flex items-center justify-center relative overflow-hidden shrink-0 shadow-[0_0_18px_rgba(34,211,238,0.18)]">
+                    <Disc className={`w-6 h-6 text-cyan-300 ${isPlaying ? 'animate-spin' : ''}`} style={{ animationDuration: '3s' }} />
+                  </div>
+                  <div className="min-w-0 text-left">
+                    <p className="text-[10px] text-gray-500 uppercase tracking-[0.18em]">Reproduciendo_Ahora</p>
+                    <p className="text-sm font-bold text-white truncate">{currentTrack.title}</p>
+                    <p className="text-[10px] text-gray-400 uppercase truncate">{playerNotice}</p>
+                  </div>
+                </div>
+                <div className={`text-[10px] uppercase tracking-[0.16em] px-2 py-1 border ${isPlaying ? 'text-emerald-300 border-emerald-500/50' : 'text-gray-500 border-gray-700'}`}>
+                  {isPlaying ? 'Live' : 'Standby'}
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2 text-[10px] uppercase tracking-widest text-gray-300">
+                <span className="border border-gray-700 px-2 py-1">{currentTrack.source}</span>
+                <span className="border border-cyan-900/60 px-2 py-1 text-cyan-300">Vol {volume}%</span>
+                <span className="border border-fuchsia-900/60 px-2 py-1 text-fuchsia-300">{supportsVolumeControl ? 'Control Activo' : 'Control Limitado'}</span>
+              </div>
+
+              <div className="w-full h-24 border border-gray-800 bg-black relative overflow-hidden">
+                <div className={`absolute inset-0 w-full h-full ${currentTrack.provider === 'youtube' ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'}`}>
+                  <div ref={youtubeHostRef} className="w-full h-full" />
+                </div>
+                <div className={`absolute inset-0 w-full h-full ${currentTrack.provider === 'spotify' ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'}`}>
+                  <div ref={spotifyHostRef} className="w-full h-full" />
+                </div>
+                <div className={`absolute inset-0 w-full h-full ${currentTrack.provider === 'soundcloud' ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'}`}>
+                  <iframe
+                    ref={soundcloudIframeRef}
+                    title="soundcloud-player"
+                    src={SOUNDCLOUD_INITIAL_TRACK ? buildSoundCloudEmbedSrc(SOUNDCLOUD_INITIAL_TRACK.soundcloudUrl) : ''}
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    allow="autoplay"
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -869,26 +1099,6 @@ export default function App() {
             />
           </div>
           <AudioVisualizer isPlaying={isPlaying} />
-          <div className="w-44 h-20 border border-gray-800 bg-black relative overflow-hidden">
-            <div className={`absolute inset-0 w-full h-full ${currentTrack.provider === 'youtube' ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'}`}>
-              <div ref={youtubeHostRef} className="w-full h-full" />
-            </div>
-            <div className={`absolute inset-0 w-full h-full ${currentTrack.provider === 'spotify' ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'}`}>
-              <div ref={spotifyHostRef} className="w-full h-full" />
-            </div>
-            <div className={`absolute inset-0 w-full h-full ${currentTrack.provider === 'soundcloud' ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'}`}>
-              <iframe
-                ref={soundcloudIframeRef}
-                title="soundcloud-player"
-                src={SOUNDCLOUD_INITIAL_TRACK ? buildSoundCloudEmbedSrc(SOUNDCLOUD_INITIAL_TRACK.soundcloudUrl) : ''}
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                allow="autoplay"
-                className="w-full h-full"
-              ></iframe>
-            </div>
-          </div>
         </div>
       </div>
     </div>
