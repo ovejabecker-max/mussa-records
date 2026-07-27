@@ -774,10 +774,10 @@ export default function App() {
                     allowFullScreen
                     allow={track.allow}
                     loading="lazy"
-                    className="opacity-75 group-hover:opacity-100 grayscale-[80%] group-hover:grayscale-0 transition-all duration-700 object-cover pointer-events-none"
+                    className="opacity-75 group-hover:opacity-100 grayscale-80 group-hover:grayscale-0 transition-all duration-700 object-cover pointer-events-none"
                     title={`preview-${track.id}`}
                   ></iframe>
-                  <div className="absolute inset-0 flex items-end justify-start p-2 bg-gradient-to-t from-black/65 to-transparent pointer-events-none">
+                  <div className="absolute inset-0 flex items-end justify-start p-2 bg-linear-to-t from-black/65 to-transparent pointer-events-none">
                     <span className="text-[10px] text-cyan-300 uppercase tracking-wider">Preview bloqueado · usar barra inferior</span>
                   </div>
                 </div>
@@ -810,13 +810,13 @@ export default function App() {
                 className={`${album.span} relative group cursor-pointer border border-gray-900 bg-gray-950 overflow-hidden hover-glitch flex flex-col`}
                 onClick={() => playTrackAtIndex(index % TRACKS.length)}
               >
-                <div className="flex-grow w-full min-h-[200px] bg-gray-900 relative">
+                <div className="grow w-full min-h-50 bg-gray-900 relative">
                   <img
                     src={`https://picsum.photos/seed/${album.img}/800/600`}
                     alt={album.title}
                     className="absolute inset-0 w-full h-full object-cover grayscale mix-blend-luminosity opacity-60 group-hover:opacity-100 group-hover:mix-blend-normal transition-all duration-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent"></div>
                 </div>
                 
                 <div className="p-4 bg-black/80 backdrop-blur-sm border-t border-gray-800 absolute bottom-0 w-full">
@@ -850,7 +850,7 @@ export default function App() {
                     experimentales para artistas que buscan identidad propia.
                   </p>
                 </div>
-                <div className="grid grid-cols-3 gap-2 text-center min-w-[240px]">
+                <div className="grid grid-cols-3 gap-2 text-center min-w-60">
                   <div className="border border-gray-800 bg-black/70 p-3">
                     <p className="text-cyan-400 text-lg font-bold">120+</p>
                     <p className="text-[10px] text-gray-500 uppercase">Beats</p>
@@ -1020,7 +1020,7 @@ export default function App() {
       <div className="fixed bottom-0 left-0 w-full bg-black/90 backdrop-blur-md border-t border-cyan-900/50 p-4 z-50 flex flex-col md:flex-row items-center justify-between shadow-[0_-10px_30px_rgba(0,255,255,0.05)]">
         
         <div className="w-full md:w-[38%] mb-4 md:mb-0">
-          <div className="relative border border-cyan-900/50 bg-gradient-to-br from-cyan-950/20 via-black to-fuchsia-950/20 p-3 md:p-4 overflow-hidden">
+          <div className="relative border border-cyan-900/50 bg-linear-to-br from-cyan-950/20 via-black to-fuchsia-950/20 p-3 md:p-4 overflow-hidden">
             <div className="absolute -top-10 -left-6 w-32 h-32 bg-cyan-500/10 blur-2xl rounded-full pointer-events-none"></div>
             <div className="absolute -bottom-10 -right-6 w-32 h-32 bg-fuchsia-500/10 blur-2xl rounded-full pointer-events-none"></div>
 
