@@ -308,6 +308,37 @@ code {
   padding: 1rem;
 }
 
+.player-card.is-minimized {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.player-card.is-minimized .player-main {
+  gap: 0.65rem;
+}
+
+.player-minimize-toggle {
+  cursor: pointer;
+}
+
+.player-card.is-minimized .player-stage,
+.player-card.is-minimized .track-copy,
+.player-card.is-minimized .track-meta,
+.player-card.is-minimized .volume-block {
+  display: none;
+}
+
+.player-card.is-minimized .disc-shell {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 14px;
+}
+
+.player-card.is-minimized .track-title {
+  margin-top: 0.15rem;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  line-height: 1.1;
+}
+
 .player-main {
   display: flex;
   flex-direction: column;

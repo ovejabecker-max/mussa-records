@@ -261,6 +261,7 @@ export default function App() {
   const [volume, setVolume] = useState(70);
   const [isMuted, setIsMuted] = useState(false);
   const [playerNotice, setPlayerNotice] = useState('Inicializando sistema inmersivo de reproducción...');
+  const [isPlayerMinimized, setIsPlayerMinimized] = useState(false);
   const currentTrack = TRACKS[currentTrackIndex];
   const currentTrackLink = currentTrack.spotifyUrl || currentTrack.soundcloudUrl || (currentTrack.videoId ? `https://www.youtube.com/watch?v=${currentTrack.videoId}` : '');
 
@@ -417,6 +418,10 @@ export default function App() {
     }
     setVolume(0);
     setIsMuted(true);
+  };
+
+  const togglePlayerMinimized = () => {
+    setIsPlayerMinimized((prev) => !prev);
   };
 
   const handleVolumeChange = (event) => {
@@ -751,14 +756,24 @@ export default function App() {
         </header>
 
         <section className="section-block">
-          <div className="panel player-card">
+          <div className={`panel player-card ${isPlayerMinimized ? 'is-minimized' : ''}`}>
             <div className="player-main">
               <div className="player-topline">
                 <p className="eyebrow" style={{ marginBottom: 0 }}>
                   <Radio size={14} />
                   Immersive Player
                 </p>
-                <span className={`chip ${isPlaying ? 'chip--live' : 'chip--muted'}`}>{isPlaying ? 'Live' : 'Standby'}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <button
+                    onClick={togglePlayerMinimized}
+                    className="chip chip--muted player-minimize-toggle"
+                    aria-label={isPlayerMinimized ? 'Expandir reproductor' : 'Minimizar reproductor'}
+                    aria-expanded={!isPlayerMinimized}
+                  >
+                    {isPlayerMinimized ? 'Expandir' : 'Minimizar'}
+                  </button>
+                  <span className={`chip ${isPlaying ? 'chip--live' : 'chip--muted'}`}>{isPlaying ? 'Live' : 'Standby'}</span>
+                </div>
               </div>
 
               <div className="now-playing">
