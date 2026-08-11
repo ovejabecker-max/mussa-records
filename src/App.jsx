@@ -109,7 +109,14 @@ const AudioVisualizer = ({ isPlaying }) => {
 };
 
 const DISCOGRAPHY = [
-  { id: '01', title: 'NEURAL_LINK', year: '2025', span: 'col-span-12 md:col-span-8 row-span-2', img: '10' },
+  {
+    id: '01',
+    title: 'NEURAL_LINK',
+    year: '2025',
+    span: 'col-span-12 md:col-span-8 row-span-2',
+    mediaType: 'video',
+    mediaSrc: '/mussa-LogoReveal-2.webm',
+  },
   { id: '02', title: 'VOID.WAV', year: '2024', span: 'col-span-12 md:col-span-4 row-span-1', img: '20' },
   { id: '03', title: 'ANOMALY', year: '2023', span: 'col-span-12 md:col-span-4 row-span-2', img: '30' },
   { id: '04', title: 'SEVEN_FOUR', year: '2022', span: 'col-span-12 md:col-span-4 row-span-1', img: '40' },
@@ -733,6 +740,22 @@ export default function App() {
           </div>
 
           <aside className="panel hero-insight">
+            <div className="logo-reveal-card">
+              <div className="logo-reveal-card__label">
+                <Radio size={14} />
+                Logotipo Mussa Records
+              </div>
+              <video
+                className="logo-reveal-video"
+                src="/mussa-LogoReveal-2.webm"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="Video del logotipo Mussa Records"
+              />
+            </div>
             <div className="metric-grid">
               <div className="metric">
                 <strong>{TRACKS.length}</strong>
@@ -930,7 +953,19 @@ export default function App() {
                 onClick={() => playTrackAtIndex(index % TRACKS.length)}
               >
                 <div className="album-card__media">
-                  <img src={`https://picsum.photos/seed/${album.img}/800/600`} alt={album.title} />
+                  {album.mediaType === 'video' ? (
+                    <video
+                      src={album.mediaSrc}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      aria-label={album.title}
+                    />
+                  ) : (
+                    <img src={`https://picsum.photos/seed/${album.img}/800/600`} alt={album.title} />
+                  )}
                 </div>
                 <div className="album-card__meta">
                   <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', alignItems: 'end' }}>
